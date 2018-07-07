@@ -1,3 +1,15 @@
+if eggYellow hits basketInner
+{
+	pointsP1++
+	playsound(Duck)
+}
+if eggRed hits basketInner
+{
+	pointsP2++
+	playsound(Chicken)
+}
+
+
 tijdOpgeladen = chargeTicks - aantalTicksOpgeladen?;
 tijdDieVuistWordtLosgelaten -= tijdOpgeladen / 2f;
 
