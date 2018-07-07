@@ -1,0 +1,8 @@
+tijdOpgeladen = chargeTicks - aantalTicksOpgeladen?;
+tijdDieVuistWordtLosgelaten -= tijdOpgeladen / 2f;
+
+if (tijdDieVuistWordtLosgelaten == 0)
+{
+	lerp(positieVuist, resetPositie);
+}
+
