@@ -97,7 +97,7 @@ public class FistControl : MonoBehaviour
         if (chargeTime >= 0)
         {
             chargeTime -= chargeTickPerFrame;
-            Debug.Log("Charge time while charging = " + chargeTime);
+            //Debug.Log("Charge time while charging = " + chargeTime);
             Debug.Log("Charging");
             if (playerCharged.isPlaying == false)
             {
@@ -129,6 +129,8 @@ public class FistControl : MonoBehaviour
             fullyChargedBonus = 1;
         }
 
+        startForce += (chargeTicks - chargeTime);
+
         rb2d.AddForce(transform.right * startForce * playerDirection * fullyChargedBonus, ForceMode2D.Impulse);
 
         if (playerCharged.isPlaying == true)
@@ -145,7 +147,7 @@ public class FistControl : MonoBehaviour
         rb2d.velocity = Vector2.zero;
         
         beginReset = true;
-        Debug.Log("Position reset from: " + currentPosition.x + " to starting position: " + startPosition.x);
+        Debug.Log("Position reset from x: " + currentPosition.x + " to starting position x: " + startPosition.x);
         if (beginReset == true)
         {
             transform.position = new Vector2(startPosition.x, currentPosition.y);

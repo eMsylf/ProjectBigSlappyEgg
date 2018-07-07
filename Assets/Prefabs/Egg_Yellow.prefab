@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58439661824021302}
   m_Layer: 0
   m_Name: Egg_Yellow
-  m_TagString: Untagged
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517085542598684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.879151, y: 0.24222183, z: 71}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: c5370c9b66bd1564e8b6162c9218024a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &58439661824021302
 CircleCollider2D:
