@@ -4,75 +4,164 @@ using UnityEngine;
 
 public class FistControl : MonoBehaviour
 {
-    public float xPos = 0f;
-    public float yPos;
+    // Movement variables
     public float moveSpeed;
+    private float verticalMovement;
 
+    // Punch charging variables
     private ParticleSystem playerCharged;
     public float chargeTicks = 100f;
     private float chargeTickPerFrame = 1f;
-    private float chargeTime;
+    private float chargeTime = 100f;
+    bool fullyCharged;
+    int fullyChargedBonus;
 
-    private float verticalMovement;
-
+    // Punch launching & reset variables
     public Rigidbody2D rb2d;
-    public float startForce = 15f;
+    public float startForce;
+    Vector2 startPosition;
+    Vector2 currentPosition;
+    public float resetTime;
+    public bool beginReset;
+
+    public float playerDirection;
 
     void Start ()
     {
+        // Assign particlesystem component
         playerCharged = GetComponent<ParticleSystem>();
+
+        // Store object starting position to reset after a punch
+        startPosition = new Vector2(transform.position.x, transform.position.y);
+        
+        print(transform.position.x + " " + transform.position.y);
+
+        // Decided to assign moveSpeed here because it's used by two separate objects. Changing it in the editor would be more work.
+        moveSpeed = 15f;
+        startForce = 40f;
+        resetTime = .2f;
+
+        // This damn particle system plays every time I charge a punch for the first time.
+        playerCharged.Stop();
+
+        beginReset = false;
     }
 	
 	void Update ()
     {
-        verticalMovement = Input.GetAxis("Vertical");
-        yPos += verticalMovement * moveSpeed;
-        transform.position = new Vector3(xPos, yPos);
-        //Debug.Log(verticalSpeed);
+        //print(Input.GetAxis("Vertical_P1"));
+        //print(Input.GetAxis("Vertical_P2"));
+        currentPosition.x = transform.position.x;
+        currentPosition.y = transform.position.y;
 
-        if (Input.GetKey("space"))
+        // Player can only move if not throwing a punch
+        
+        if (gameObject.CompareTag("P1"))
         {
-            ChargePunch();
+            transform.Translate(0f, (Input.GetAxis("Vertical_P1") * moveSpeed) * Time.deltaTime, 0f);
+            // Charging a punch. If the player releases the spacebar, a punch is thrown.
+            if (Input.GetKey(KeyCode.D))
+            {
+                ChargePunch();
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
+                playerDirection = 1;
+                ReleasePunch();
+            }
         }
-        else if (Input.GetKeyUp("space"))
+        if (gameObject.CompareTag("P2"))
         {
-            ReleasePunch();
+            transform.Translate(0f, (Input.GetAxis("Vertical_P2") * moveSpeed) * Time.deltaTime, 0f);
+            // Charging a punch. If the player releases the spacebar, a punch is thrown.
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                ChargePunch();
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                playerDirection = -1;
+                ReleasePunch();
+            }
         }
+        //ResetPosition();
+
+        currentPosition.y = Mathf.Clamp(transform.position.y, -4f, 4f);
+        transform.position = currentPosition;
     }
-
-    /// <summary>
-    /// Charge punch by holding down spacebar
-    /// </summary>
+    
+    // Charge a punch by holding down spacebar
     void ChargePunch ()
     {
+        
         if (chargeTime >= 0)
         {
             chargeTime -= chargeTickPerFrame;
-            Debug.Log("ayy = " + chargeTime);
+            Debug.Log("Charge time while charging = " + chargeTime);
             Debug.Log("Charging");
+            if (playerCharged.isPlaying == false)
+            {
+                playerCharged.Play();
+            }
         } else
         {
-            Debug.Log("lmao = " + chargeTime);
+            Debug.Log("Charge time after completion = " + chargeTime);
             Debug.Log("CHARGED!");
-
+            fullyCharged = true;
 
             playerCharged.Play();
         }
     }
-
-    /// <summary>
-    /// Throw punch by releasing spacebar
-    /// </summary>
+    
+    // Throw punch by releasing spacebar
     void ReleasePunch ()
     {
         chargeTime = chargeTicks;
-        //var emission = playerCharged.emission;
-        //emission.enabled = false;
         Debug.Log("PUNCH!");
 
-        rb2d.AddForce(transform.up * startForce, ForceMode2D.Impulse);
-        
-        playerCharged.Stop();
+        //startForce = chargeTicks - chargeTime;
+        if (fullyCharged == true)
+        {
+            fullyChargedBonus = 2;
+        }
+        else
+        {
+            fullyChargedBonus = 1;
+        }
+
+        rb2d.AddForce(transform.right * startForce * playerDirection * fullyChargedBonus, ForceMode2D.Impulse);
+
+        if (playerCharged.isPlaying == true)
+        {
+            playerCharged.Stop();
+        }
+        StartCoroutine(Reset());
     }
+
+    IEnumerator Reset ()
+    {
+        yield return new WaitForSeconds(resetTime);
+
+        rb2d.velocity = Vector2.zero;
+        
+        beginReset = true;
+        Debug.Log("Position reset from: " + currentPosition.x + " to starting position: " + startPosition.x);
+        if (beginReset == true)
+        {
+            transform.position = new Vector2(startPosition.x, currentPosition.y);
+        }
+        beginReset = false;
+
+    }
+
+    /*
+    void ResetPosition ()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+
+        }
+    }
+    */
 
 }

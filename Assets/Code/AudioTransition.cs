@@ -8,22 +8,24 @@ public class AudioTransition : MonoBehaviour
     public AudioMixer mixer;
 
     private AudioMixerSnapshot normalSnapshot;
-    private AudioMixerSnapshot lowVolumeSnapshot;
+    //private AudioMixerSnapshot lowVolumeSnapshot;
+    private AudioMixerSnapshot muteSnapshot;
 
 	// Use this for initialization
 	void Start ()
     {
         normalSnapshot = mixer.FindSnapshot("Normal");
-        lowVolumeSnapshot = mixer.FindSnapshot("LowVolume");
+        //lowVolumeSnapshot = mixer.FindSnapshot("LowVolume");
+        muteSnapshot = mixer.FindSnapshot("Mute");
 	}
 	
 	// Update is called once per frame
 	void Update ()
-    {
-		if(Input.GetKeyDown(KeyCode.Space))
+    { 
+		if(Input.GetKeyDown(KeyCode.M))
         {
             mixer.ClearFloat("MasterVolume");
-            lowVolumeSnapshot.TransitionTo(.5f);
+            muteSnapshot.TransitionTo(.5f);
         }
         else if(Input.GetKeyDown(KeyCode.LeftShift))
         {
