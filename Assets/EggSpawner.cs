@@ -7,9 +7,10 @@ public class EggSpawner : MonoBehaviour {
     public GameObject eggYellowPrefab;
     public GameObject eggRedPrefab;
     public Transform[] spawnPoints;
-
+    
     public float minDelay = .1f;
     public float maxDelay = 1f;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class EggSpawner : MonoBehaviour {
     {
         while (true)
         {
+            
             // Create random delay between spawns
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSeconds(delay);

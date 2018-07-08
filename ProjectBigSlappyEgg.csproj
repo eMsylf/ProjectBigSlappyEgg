@@ -292,6 +292,7 @@
     <Compile Include="Assets\Code\ClockScript.cs" />
     <Compile Include="Assets\Code\FistControl.cs" />
     <Compile Include="Assets\Code\MainMenu.cs" />
+    <Compile Include="Assets\Code\PostGameMenu.cs" />
     <Compile Include="Assets\Code\Score.cs" />
     <Compile Include="Assets\EggSpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
