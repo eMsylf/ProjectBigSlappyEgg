@@ -289,6 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Code\AudioTransition.cs" />
+    <Compile Include="Assets\Code\ClockScript.cs" />
     <Compile Include="Assets\Code\FistControl.cs" />
     <Compile Include="Assets\Code\MainMenu.cs" />
     <Compile Include="Assets\Code\Score.cs" />

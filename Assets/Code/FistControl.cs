@@ -93,7 +93,10 @@ public class FistControl : MonoBehaviour
     // Charge a punch by holding down spacebar
     void ChargePunch ()
     {
-        
+        // Reset fullyCharged boolean so the player doesn't get the fully charged bonus for every punch after their first fully charged one
+        fullyCharged = false;
+
+        // Checking whether the punch is still charging up to its limit
         if (chargeTime >= 0)
         {
             chargeTime -= chargeTickPerFrame;

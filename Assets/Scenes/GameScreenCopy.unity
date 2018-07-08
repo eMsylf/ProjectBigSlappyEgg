@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 184161854}
   - component: {fileID: 184161853}
   - component: {fileID: 184161856}
+  - component: {fileID: 184161857}
   m_Layer: 0
   m_Name: Basket
   m_TagString: Basket
@@ -346,7 +347,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.18410456}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -357,7 +358,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.477432, y: 0.93}
+  m_Size: {x: 12.477432, y: 0.5617908}
   m_EdgeRadius: 0
 --- !u!50 &184161856
 Rigidbody2D:
@@ -379,6 +380,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &184161857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 184161850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2823d4f3e140e764fbafa5dc0d7952e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText_P1: {fileID: 1174970510}
+  scoreText_P2: {fileID: 2134414000}
+  basketInnerCollider: {fileID: 184161855}
+  score_P1: 0
+  score_P2: 0
 --- !u!1 &390489196
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1001,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1921662030
+  randomSeed: 457619165
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5089,7 +5106,6 @@ GameObject:
   - component: {fileID: 1174970509}
   - component: {fileID: 1174970511}
   - component: {fileID: 1174970510}
-  - component: {fileID: 1174970512}
   m_Layer: 5
   m_Name: Score_P1
   m_TagString: P1
@@ -5154,19 +5170,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1174970508}
---- !u!114 &1174970512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1174970508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2823d4f3e140e764fbafa5dc0d7952e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1174970510}
-  basket: {fileID: 184161850}
 --- !u!1 &1184643205
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,6 +5301,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1283826857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1283826859}
+  - component: {fileID: 1283826858}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1283826858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283826857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c137bd90394ac64c943d8038ba98078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockText: {fileID: 436651846}
+--- !u!4 &1283826859
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283826857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3234459, y: -1.5081156, z: 71.66072}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1513586449
 GameObject:
@@ -9265,7 +9309,6 @@ GameObject:
   - component: {fileID: 2134413999}
   - component: {fileID: 2134414001}
   - component: {fileID: 2134414000}
-  - component: {fileID: 2134414002}
   m_Layer: 5
   m_Name: Score_P2
   m_TagString: P2
@@ -9330,16 +9373,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2134413998}
---- !u!114 &2134414002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2134413998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2823d4f3e140e764fbafa5dc0d7952e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 2134414000}
-  basket: {fileID: 184161850}
