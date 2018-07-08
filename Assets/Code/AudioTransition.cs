@@ -33,13 +33,14 @@ public class AudioTransition : MonoBehaviour
             normalSnapshot.TransitionTo(.5f);
         }
 
+        /*
         else if(Input.GetMouseButton(0))
         {
             float currentVolume;
             mixer.GetFloat("MasterVolume", out currentVolume);
             mixer.SetFloat("MasterVolume", currentVolume + .1f);
         }
-
+        */
         else if (Input.GetMouseButton(1))
         {
             float currentVolume;
