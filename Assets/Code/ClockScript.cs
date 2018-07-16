@@ -101,8 +101,8 @@ public class ClockScript : MonoBehaviour {
         }
         else if (score.score_P1 < score.score_P2)
         {
-            pointsTextWin_P2.text = scoreString_P1;
-            pointsTextLose_P1.text = scoreString_P2;
+            pointsTextWin_P2.text = scoreString_P2;
+            pointsTextLose_P1.text = scoreString_P1;
             winnerScreen_P2.SetActive(true);
         }
         else if (score.score_P1 == score.score_P2)
