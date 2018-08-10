@@ -1,3 +1,29 @@
+Notities post-mortem:
+
+Wat ging goed?
+- Op een gegeven moment kwam er bepaalde herkenning in wat ik wilde en kon doen
+- Syntax werd steeds logischer, en ik kon uiteindelijk gokken wat ik kon gebruiken voor bepaalde dingen
+- Basisspel binnen ISA uren af kunnen krijgen
+- Art mockups kunnen implementeren
+- Opgedane kennis uit tutorials kunnen toepassen op eigen project
+
+Wat ging minder goed?
+- Canvas gaf problemen. Ik had nooit de grootte van de window aangepast waardoor ik niet wist van de 
+	rare dingen die gebeurden zodra ik de schermgrootte veranderde (achtergrond scalet niet mee)
+- Door de canvasproblemen zijn mijn visuals niet allemaal even werkzaam. 
+- Punch charge van speler 2 gaat aanmerkelijk sneller dan die van speler 1
+- Niet alles kunnen doen wat ik had willen doen (sfx/muziek/pauze/etc.)
+
+Wat zou ik nog willen toevoegen?
+- Sound effects voor eend/kip
+- Muziek
+- Pause menu
+- Aanpasbare rondetijd vanuit menu
+
+
+
+
+
 if eggYellow hits basketInner
 {
 	pointsP1++
