@@ -8,6 +8,7 @@ TagManager:
   - P2
   - Basket
   - EggSpawner
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

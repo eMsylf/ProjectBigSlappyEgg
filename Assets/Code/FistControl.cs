@@ -26,6 +26,11 @@ public class FistControl : MonoBehaviour
 
     public float playerDirection;
 
+    public AudioSource hitAudioSource;
+    public AudioClip[] hitSound;
+    private AudioClip hitClip;
+
+
     void Start ()
     {
         // Assign particlesystem component
@@ -45,6 +50,8 @@ public class FistControl : MonoBehaviour
         playerCharged.Stop();
 
         beginReset = false;
+
+        hitAudioSource = gameObject.GetComponent<AudioSource>();
     }
 	
 	void Update ()
@@ -168,5 +175,13 @@ public class FistControl : MonoBehaviour
         }
     }
     */
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        int index = Random.Range(0, hitSound.Length);
+        hitClip = hitSound[index];
+        hitAudioSource.clip = hitClip;
+        hitAudioSource.Play();
+    }
 
 }

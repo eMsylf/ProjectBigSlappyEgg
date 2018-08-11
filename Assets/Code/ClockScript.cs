@@ -36,6 +36,7 @@ public class ClockScript : MonoBehaviour {
     public Text scoreText_P2;
 
     public GameObject postGameMenu;
+    public GameObject musicPlayerGame;
 
     bool canContinue = false;
 
@@ -135,6 +136,7 @@ public class ClockScript : MonoBehaviour {
 
     void ReturnToMainMenu()
     {
+        Destroy(musicPlayerGame);
         SceneManager.LoadScene(sceneBuildIndex: 1);
     }
 }
